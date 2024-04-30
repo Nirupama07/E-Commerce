@@ -3,47 +3,39 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class orders {
-    private int orderId;
-    private user user;
-    private List<products> products;
-    
-    public orders()
-    {
-    }
+import java.util.List;
 
-    public orders(int orderId, user user) {
-        this.orderId = orderId;
+public class Order {
+    private Long id;
+    private User user;
+    private List<Product> products;
+
+    public Order(Long id, User user) {
+        this.id = id;
         this.user = user;
-        this.products = new ArrayList<>();
     }
 
-    public int getOrderId() {
-		return orderId;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public user getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public void setUser(user user) {
-		this.user = user;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public List<products> getProducts() {
-		return products;
-	}
+    public List<Product> getProducts() {
+        return products;
+    }
 
-	public void setProducts(List<products> products) {
-		this.products = products;
-	}
-
-	public void addproducts(products products) {
-        products.add(products);
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
-

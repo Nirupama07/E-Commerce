@@ -3,33 +3,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ecommerce.models.user;
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginService {
-List<user> users = new ArrayList<user>();
-	
-	public loginservice()
-	{
-		
-	}
-	public boolean createuser(String name,String email,String password) {
-		user u = new user();
-		u.setfirstname(name);
-	
-		u.setpassword(password);
-		if(email.contains("@")) {
-			u.setemail(email);
-		}else {
-			return false;
-		}
-		
-		users.add(u);
-		return true;
-	}
-	public user getuserbyemail(String email) {
-		for(user u:users) {
-			if(u.getemail().equals(email)) {
-				return u;
-			}
-		}
-		return null;
-	}
+    private Map<Long, User> users = new HashMap<>();
+    private Long userIdCounter = 1L;
+
+    public User register(User user) {
+        user.setId(userIdCounter++);
+        users.put(user.getId(), user);
+        return user;
+    }
+
+    public User authenticate(String username, String password) {
+        for (User user : users.values()) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public User getUserById(Long id) {
+        return users.get(id);
+    }
 }
+

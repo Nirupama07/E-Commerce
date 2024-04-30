@@ -1,35 +1,32 @@
 package ecommerce;
 
-import models.cart;
-import models.orders;
-import models.products;
-import models.user;
-
-public class main {
-
+public class Main {
     public static void main(String[] args) {
-        
-        user user1 = new user("user1", "user1@gmail.com", "Address 1");
-        user user2 = new user("user2", "user2@gmail.com", "Address 2");
+     
+        UserService userService = new UserService();
+        ProductService productService = new ProductService();
+        OrderService orderService = new OrderService(userService, productService);
 
-        
-        products product1 = new products(1, "Product 1", 10.00);
-        products product2 = new products(2, "Product 2", 20.00);
-        products product3 = new products(3, "Product 3", 30.00);
+      
+        User user = userService.register(new User(null, "user123", "password"));
 
-       
-        orders order1 = new orders(1, user1);
-        order1.addproducts(product1);
-        order1.addproducts(product2);
+ 
+        productService.addProduct(new Product(null, "Product 1", 10.99));
+        productService.addProduct(new Product(null, "Product 2", 15.99));
 
-        orders order2 = new orders(2, user2);
-        order2.addproducts(product2);
-        order2.addproducts(product3);
+      
+        List<Long> productIds = List.of(1L, 2L); 
+        Order order = orderService.placeOrder(user.getId(), productIds);
 
-        
-        cart cart = new cart(user1);
-        cart.addproducts(product1);
-        cart.addproducts(product3);
-        cart.removeproducts(product1);
+        if (order != null) {
+            System.out.println("Order placed successfully!");
+            System.out.println("Order ID: " + order.getId());
+            System.out.println("Products:");
+            for (Product product : order.getProducts()) {
+                System.out.println("- " + product.getName() + " ($" + product.getPrice() + ")");
+            }
+        } else {
+            System.out.println("Failed to place order!");
+        }
     }
 }

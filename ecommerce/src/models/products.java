@@ -1,43 +1,37 @@
 package models;
 
-public class products {
-
-    private int productId;
+public class product {
+    private Long id;
     private String name;
     private double price;
-    
-    public products()
-    {
-    }
 
-    public products(int productId, String name, double price)
-    {
-        this.productId = productId;
+    public Product(Long id, String name, double price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }
-    public int getProductId() {
-		return productId;
-	}
 
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public double getPrice() {
-		return price;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }
-    
