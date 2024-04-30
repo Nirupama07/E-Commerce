@@ -17,4 +17,7 @@ Order Management: Once a purchase is made, the system keeps track of the orders,
 
 Search and Filters: Making it simple for customers to find products they're interested in by providing search functionality and options to refine their search results.
 
+Database schema:
+![Dtabase_schema](https://github.com/Nirupama07/E-Commerce/blob/main/ER%20ecommerce.png)
+
 
